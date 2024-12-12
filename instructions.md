@@ -23,4 +23,4 @@ npm run start
 npm run dev
 ```
 
-the app will open in http://127.0.0.1:3000/participant/availability
+the app will open in http://127.0.0.1/participant/availability
