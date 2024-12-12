@@ -12,9 +12,15 @@ npm run build
 
 ### To Run the App
 
-````bash
-npm run start```
+```bash
+npm run start
 
-````
+```
+
+### To Run the dev server
+
+```bash
+npm run dev
+```
 
 the app will open in http://127.0.0.1:3000/participant/availability
