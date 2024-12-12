@@ -13,17 +13,18 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { ControllerRenderProps } from "react-hook-form";
-import { AvailabilityFormInput } from "@/app/participant/availability/__types/availability-form-input.type";
+import { AvailabilityFormInput } from "@/app/participant/availability/schemas/AvailabilityForm.schema";
 
 export default function DatePicker({
   field,
-  option,
   date,
   placeholder,
 }: {
   date: Date | undefined;
-  option: "start" | "end";
-  field: ControllerRenderProps<AvailabilityFormInput, "date_range">;
+  field: ControllerRenderProps<
+    AvailabilityFormInput,
+    `date_range.start` | `date_range.end`
+  >;
   placeholder: string;
 }) {
   const [open, setOpen] = React.useState<boolean>(false);
@@ -44,14 +45,14 @@ export default function DatePicker({
         <Calendar
           mode="single"
           selected={date}
-          onSelect={(e) => {
-            field.onChange({
-              ...field.value,
-              [option]: e,
-            });
-            setOpen(false);
+          onSelect={(selectedDate) => {
+            if (selectedDate) {
+              field.onChange(selectedDate); // Pass the selected Date directly
+              setOpen(false);
+            }
           }}
           initialFocus
+          disabled={(date) => date < new Date()}
         />
       </PopoverContent>
     </Popover>

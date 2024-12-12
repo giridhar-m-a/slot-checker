@@ -4,7 +4,7 @@ export type Participant = {
 };
 
 export type Participants = {
-  [id: string]: Participant;
+  [id: number]: Participant;
 };
 
 export type TimeSlot = {
@@ -12,7 +12,7 @@ export type TimeSlot = {
   end: string;
 };
 
-export type ParticipantAvailability = {
+export type ParticipantsAvailability = {
   [id: string]: {
     [day: string]: TimeSlot[];
   };
@@ -31,4 +31,26 @@ export type ParticipantSlot = {
       end: string;
     }[];
   }[];
+};
+
+export type TimeRange = {
+  start: string;
+  end: string;
+};
+
+export type ParticipantAvailability = {
+  [day: string]: TimeRange[];
+};
+
+export type SlotsOutput = {
+  [day: string]: TimeRange[];
+};
+
+export type FullAvailability = {
+  [id: number]: ParticipantAvailability;
+};
+
+export type UserSlot = {
+  id: number;
+  slots: SlotsOutput;
 };
